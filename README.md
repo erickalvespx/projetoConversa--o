@@ -4,9 +4,6 @@ Este é um projeto de um chat simples construído com HTML, CSS e JavaScript pur
 
 O projeto foi desenvolvido para ser uma aplicação frontend pura, sem a necessidade de um backend ou dependências complexas, rodando diretamente no navegador.
 
-![Sugestão de Screenshot](https://via.placeholder.com/600x400.png?text=Coloque+um+screenshot+do+seu+chat+aqui!)
-*(Substitua a imagem acima por um screenshot real do seu projeto)*
-
 ## ✨ Funcionalidades
 
 - **Tradução Automática:** Detecta se a mensagem está em português ou inglês e a traduz para o outro idioma.
