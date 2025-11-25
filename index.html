@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Tradução | Inglês & Português</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Chat de Tradução 🇧🇷 🇺🇸</h1>
+            <!-- Botão de Configurações -->
+            <button id="settings-btn" title="Configurações">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 13.616v-3.232c-1.651-.587-2.694-.752-3.219-2.019v-.001c-.527-1.271.1-2.134.847-3.707l-2.285-2.285c-1.561.742-2.433 1.375-3.707.847h-.001c-1.269-.526-1.435-1.576-2.019-3.219h-3.232c-.582 1.635-.749 2.692-2.019 3.219h-.001c-1.271.528-2.132-.098-3.707-.847l-2.285 2.285c.745 1.568 1.375 2.434.847 3.707-.527 1.271-1.576 1.439-3.219 2.02v3.232c1.634.581 2.691.748 3.219 2.019.53 1.273-.11 2.14-.847 3.707l2.285 2.286c1.562-.743 2.434-1.375 3.707-.847h.001c1.27.526 1.436 1.576 2.019 3.219h3.232c.582-1.635.75-2.692 2.019-3.219h.001c1.271-.528 2.132.098 3.707.847l2.285-2.286c-.744-1.563-1.375-2.433-.847-3.707.527-1.271 1.576-1.439 3.219-2.019zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"/></svg>
+            </button>
+            <!-- Menu de Configurações (escondido) -->
+            <div id="settings-menu" class="settings-menu">
+                <button id="theme-toggle-btn">Alterar para Tema Claro</button>
+                <button id="clear-chat-menu-btn" class="danger">Limpar Histórico</button>
+            </div>
+        </header>
+
+        <main class="chat-messages">
+            <!-- As mensagens do chat aparecerão aqui via JavaScript -->
+        </main>
+
+        <footer class="chat-form-container">
+            <form id="chat-form">
+                <input
+                    id="msg"
+                    type="text"
+                    placeholder="Digite sua mensagem..."
+                    required
+                    autocomplete="off"
+                />
+                <button class="btn">Enviar</button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

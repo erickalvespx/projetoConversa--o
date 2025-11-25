@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+/* Tema Escuro (Padrão) */
+:root {
+    --background-primary: #1e2428;
+    --background-secondary: #2a2f32;
+    --background-tertiary: #364043;
+    --text-primary: #e1e1e1;
+    --text-secondary: #aaa;
+    --border-color: #444;
+    --success-color: #00a884; /* Cor do WhatsApp */
+}
+
+/* Tema Claro */
+body.light-theme {
+    --background-primary: #f0f2f5;
+    --background-secondary: #ffffff;
+    --background-tertiary: #e9edef;
+    --text-primary: #111b21;
+    --text-secondary: #667781;
+    --border-color: #d1d7db;
+    /* --success-color permanece o mesmo */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: var(--background-primary);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    background: var(--background-secondary);
+    width: 90%;
+    max-width: 600px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
+    background: var(--background-primary);
+    padding: 20px 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    position: relative; /* Contexto para o botão de limpar */
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Adiciona barra de rolagem quando as mensagens transbordam */
+}
+
+.message {
+    display: flex; /* Transforma a mensagem em um container flex */
+    align-items: flex-end; /* Alinha o avatar e o balão na base */
+    gap: 15px; /* Espaço entre o avatar e o balão */
+    margin-bottom: 20px;
+    max-width: 90%; /* Aumenta um pouco a largura máxima */
+    animation: fadeIn 0.4s ease-out;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Deixa o avatar redondo */
+    background: var(--background-tertiary); /* Cor de fundo para o círculo do avatar */
+    padding: 5px; /* Pequeno preenchimento interno */
+    flex-shrink: 0; /* Impede que o avatar encolha */
+}
+
+.avatar svg {
+    width: 100%;
+    height: 100%;
+}
+.message-bubble {
+    background: var(--background-tertiary);
+    border-radius: 8px;
+    line-height: 1.4;
+    position: relative; /* Contexto para o botão de copiar */
+    padding: 10px;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.25); /* Fundo semi-transparente */
+    border: none;
+    border-radius: 50%; /* Botão circular */
+    width: 28px; /* Tamanho do círculo */
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    fill: var(--text-secondary); /* Cor do ícone SVG, mais clara */
+    opacity: 0; /* Começa invisível */
+    transform: scale(0.9); /* Começa um pouco menor para efeito de "pop" */
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1); /* Aumenta para o tamanho normal no hover */
+}
+
+.message-bubble:hover .copy-btn {
+    opacity: 1; /* Fica visível no hover */
+    transform: scale(1);
+}
+
+.copy-btn.copied {
+    background: var(--success-color);
+    fill: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.copy-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.message.user-message {
+    /* Usa a cor verde que já definimos */
+    /* Truque para alinhar o balão à direita */
+    margin-left: auto; 
+    flex-direction: row-reverse; /* Inverte a ordem: balão primeiro, avatar depois */
+}
+
+.message.user-message .avatar {
+    background: var(--success-color); /* Cor de fundo para o avatar do usuário */
+}
+
+.message.user-message .message-bubble {
+    background: var(--success-color);
+}
+
+.message.user-message .meta {
+    color: #f0f0f0; /* Cor mais clara para o nome no fundo verde */
+}
+
+.message .meta {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--success-color);
+    margin-bottom: 5px;
+}
+
+.message .meta span {
+    color: var(--text-secondary);
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.chat-form-container {
+    padding: 20px;
+    background-color: var(--background-primary);
+}
+
+#chat-form {
+    display: flex;
+}
+
+#msg {
+    flex-grow: 1;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--background-tertiary);
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.btn {
+    width: 100px;
+    margin-left: 10px;
+    background: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+#typing-indicator .text {
+    color: var(--text-secondary); /* Deixa o texto do indicador um pouco mais claro */
+    font-style: italic;
+}
+
+/* Estilos do novo botão de Configurações */
+#settings-btn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    fill: var(--text-secondary);
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+#settings-btn:hover {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Estilos do Menu de Configurações */
+.settings-menu {
+    position: absolute;
+    top: 65px; /* Posição logo abaixo do header */
+    right: 15px;
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden; /* Escondido por padrão */
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.settings-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.settings-menu button {
+    background: var(--background-tertiary);
+    color: var(--text-primary);
+    width: 100%;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.settings-menu button.danger {
+    background: #c94c4c;
+    color: white;
+}
+
+/* Animação para as mensagens aparecerem suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Começa um pouco abaixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Termina na posição final */
+    }
+}
+
+
